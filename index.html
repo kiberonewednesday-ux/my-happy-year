@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С Новым годом 2026! 🎄✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .greeting {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8),
+                         0 0 30px rgba(255, 215, 0, 0.8);
+            animation: glow 2s ease-in-out infinite alternate;
+            background: linear-gradient(45deg, #ffcc00, #ff66cc, #33ccff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.7),
+                             0 0 20px rgba(255, 215, 0, 0.7);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 1),
+                             0 0 40px rgba(255, 215, 0, 1),
+                             0 0 60px rgba(255, 0, 255, 0.8);
+            }
+        }
+
+        .photos-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            max-width: 1000px;
+        }
+
+        .photo-item {
+            width: calc(33.333% - 30px);
+            min-width: 200px;
+            height: 200px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5),
+                        0 0 40px rgba(255, 0, 255, 0.3);
+            position: relative;
+            transform: rotate(var(--rotate, 0deg));
+            transition: transform 0.3s ease;
+        }
+
+        .photo-item:nth-child(1) { --rotate: -3deg; }
+        .photo-item:nth-child(2) { --rotate: 2deg; }
+        .photo-item:nth-child(3) { --rotate: -2deg; }
+
+        .photo-item:hover {
+            transform: rotate(0deg) scale(1.05);
+            z-index: 20;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 8px;
+            font-size: 0.9rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-item:hover .photo-caption {
+            transform: translateY(0);
+        }
+
+        .wishes {
+            font-size: 1.5rem;
+            margin: 30px 0;
+            line-height: 1.6;
+            max-width: 800px;
+            background: rgba(0, 30, 60, 0.7);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .wishes strong {
+            color: #ffd700;
+            font-weight: 700;
+        }
+
+        .timer-container {
+            background: rgba(0, 20, 40, 0.8);
+            padding: 30px;
+            border-radius: 25px;
+            margin: 40px 0;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
+            border: 3px solid rgba(100, 200, 255, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .timer-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+        }
+
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .time-unit {
+            text-align: center;
+        }
+
+        .time-value {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #ff66cc;
+            text-shadow: 0 0 15px rgba(255, 102, 204, 0.9);
+            min-width: 100px;
+        }
+
+        .time-label {
+            font-size: 1.2rem;
+            color: #aaffff;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .fireworks-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            animation: firework-explode 1.5s ease-out forwards;
+        }
+
+        @keyframes firework-explode {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(10);
+                opacity: 0;
+            }
+        }
+
+        .celebration-text {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Dancing Script', cursive;
+            font-size: 5rem;
+            color: white;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.9),
+                         0 0 40px rgba(255, 255, 0, 0.9),
+                         0 0 60px rgba(0, 255, 255, 0.9);
+            z-index: 110;
+            opacity: 0;
+            transition: opacity 1s;
+            pointer-events: none;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .greeting {
+                font-size: 2.5rem;
+            }
+            
+            .photos-gallery {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .photo-item {
+                width: 90%;
+                height: 250px;
+                --rotate: 0deg;
+            }
+            
+            .wishes {
+                font-size: 1.2rem;
+                padding: 20px;
+            }
+            
+            .timer {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .time-value {
+                font-size: 2.5rem;
+                min-width: 80px;
+            }
+            
+            .celebration-text {
+                font-size: 2.5rem;
+                white-space: normal;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .photo-item {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="greeting">С Новым 2026 годом! 🎄✨</h1>
+        
+        <!-- Галерея фотографий -->
+        <div class="photos-gallery">
+            <div class="photo-item">
+                <img src="https://www.shutterstock.com/shutterstock/photos/418606552/display_1500/stock-photo-happy-new-year-418606552.jpg" alt="Новогоднее настроение">
+                <div class="photo-caption">Наша семья ❤️</div>
+            </div>
+            <div class="photo-item">
+                <img src="https://images.unsplash.com/photo-1544273170-5a786ad5f9c1?auto=format&fit=crop&w=600&q=80" alt="Новогодние каникулы">
+                <div class="photo-caption">Отдых вместе ✨</div>
+            </div>
+            <div class="photo-item">
+                <img src="https://cms-artifacts.motionarray.com/content/motion-array/3122392/Happy_New_Year_2026_Banner_high_resolution_preview_3122392.jpg?Expires=2052208623&Key-Pair-Id=K2ZDLYDZI2R1DF&Signature=h-xp0zJ~Cok2BY6LpzWd7HoN062rYTGZsoN57kWl6TAPs8WB72aHNO56qIhlZ5Z1sDbtNg66GSSdJFe-JYSd0LPQaM34BvnkdpOxIT3xAB7dQtpDbn4sbRFsgSq9z~Jpx44VMqVEzSAYcZ3~-ZLmVm4bQh6pd15xxn9AkJl4ucoJrFrELxwLiegEhIGO6zCcsgYcM5GvRfMj~qrs820aNfNyyDuhBolzMEvRMkv7xtu1i3NfC02bbOcgYYeoX6wJDoT6adlO8zyWTqF3wpmndhHh8NEzIYSU89zwst4Qn~hqNBGfYg9erSE2wyt4vQmQcriHOxpVSkrhvAvi8gBIqQ__" alt="Зимние каникулы">
+                <div class="photo-caption">Зимние воспоминания ❄️</div>
+            </div>
+        </div>
+        
+        <div class="wishes">
+            <p>Дорогие мои родственники! ❤️</p>
+            <p>Пусть 2026 год принесет вам:</p>
+            <p><strong>Здоровья</strong> - чтобы силы никогда не покидали вас,</p>
+            <p><strong>Счастья</strong> - чтобы улыбки озаряли ваши лица каждый день,</p>
+            <p><strong>Любви</strong> - чтобы ваше сердце всегда было наполнено теплом,</p>
+            <p><strong>Удачи</strong> - чтобы все начинания приносили успех,</p>
+            <p><strong>Гармонии</strong> - чтобы в каждом доме царили покой и радость!</p>
+            <p>Пусть этот год станет для вас временем новых возможностей, ярких впечатлений и исполнения самых заветных желаний! 🌟</p>
+        </div>
+        
+        <div class="timer-container">
+            <div class="timer-title">До Нового года осталось:</div>
+            <div class="timer">
+                <div class="time-unit">
+                    <div class="time-value" id="days">00</div>
+                    <div class="time-label">дней</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="hours">00</div>
+                    <div class="time-label">часов</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="minutes">00</div>
+                    <div class="time-label">минут</div>
+                </div>
+                <div class="time-unit">
+                    <div class="time-value" id="seconds">00</div>
+                    <div class="time-label">секунд</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="fireworks-container" id="fireworks-container"></div>
+    <div class="celebration-text" id="celebration-text">С НОВЫМ ГОДОМ! 🎉✨</div>
+
+    <script>
+        // Таймер до Нового года 2026
+        function updateCountdown() {
+            const now = new Date();
+            const newYear = new Date(2026, 0, 1, 0, 0, 0); // 1 января 2026, 00:00:00
+            
+            const diff = newYear - now;
+            
+            if (diff <= 0) {
+                // Наступил Новый год!
+                startCelebration();
+                return;
+            }
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            
+            setTimeout(updateCountdown, 1000);
+        }
+
+        // Запуск празднования
+        function startCelebration() {
+            // Показать салют
+            const fireworksContainer = document.getElementById('fireworks-container');
+            fireworksContainer.style.opacity = '1';
+            
+            // Создать салюты
+            let fireworkCount = 0;
+            const maxFireworks = 30;
+            
+            const fireworkInterval = setInterval(() => {
+                createFirework();
+                fireworkCount++;
+                
+                if (fireworkCount >= maxFireworks) {
+                    clearInterval(fireworkInterval);
+                }
+            }, 300);
+            
+            // Показать текст поздравления
+            const celebrationText = document.getElementById('celebration-text');
+            celebrationText.style.opacity = '1';
+            
+            // Остановить таймер
+            clearInterval(window.countdownInterval);
+            
+            // Продолжать показывать салюты периодически
+            setInterval(() => {
+                if (Math.random() > 0.7) {
+                    createFirework();
+                }
+            }, 2000);
+        }
+
+        // Создание салюта
+        function createFirework() {
+            const fireworksContainer = document.getElementById('fireworks-container');
+            const firework = document.createElement('div');
+            firework.className = 'firework';
+            
+            // Случайные координаты
+            const x = Math.random() * 100;
+            const y = Math.random() * 80; // Не слишком высоко
+            
+            firework.style.left = `${x}%`;
+            firework.style.top = `${y}%`;
+            
+            // Случайный цвет
+            const colors = ['#ff66cc', '#33ccff', '#ffcc00', '#00ff99', '#ff99cc', '#66ffcc'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            firework.style.backgroundColor = color;
+            firework.style.boxShadow = `0 0 20px ${color}`;
+            
+            fireworksContainer.appendChild(firework);
+            
+            // Удалить салют после анимации
+            setTimeout(() => {
+                firework.remove();
+            }, 1500);
+        }
+
+        // Запуск при загрузке страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCountdown();
+            
+            // Добавить эффект параллакс для галереи
+            const photos = document.querySelectorAll('.photo-item');
+            photos.forEach(photo => {
+                photo.addEventListener('mousemove', (e) => {
+                    const rect = photo.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateX = (y - centerY) / 10;
+                    const rotateY = (centerX - x) / 10;
+                    
+                    photo.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+                });
+                
+                photo.addEventListener('mouseleave', () => {
+                    photo.style.transform = 'rotate(var(--rotate, 0deg))';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
